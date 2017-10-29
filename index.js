@@ -46,6 +46,13 @@ console.log('local storage ', localStorage)
    res.send("recieved your request!");
 });
 
+
+
+app.post('/profile', function(req, res){
+   // localStorage.setItem('message', req.body)
+   res.send("recieved profile request!");
+});
+
 app.get('/doge', function(req, res){
 	res.render('image')
 });
@@ -54,9 +61,9 @@ app.get('/first_template', function(req, res){
 	res.render('first_view')
 });
 
-app.get('/dynamic_view', function(req, res){
-	res.render('dynamic', {
-		user: {name: 'Gideon', age: '21'}
+app.get('/profile', function(req, res){
+	res.render('profile', {
+		user: {username: 'Gideon', password: '21', location:"Rolla"}
 	});
 });
 

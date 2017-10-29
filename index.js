@@ -4,6 +4,10 @@ var multer = require('multer');
 var upload = multer();
 var things = require('./things.js');
 var bodyParser = require('body-parser');
+if (typeof localStorage === "undefined" || localStorage === null) {
+  var LocalStorage = require('node-localstorage').LocalStorage;
+  localStorage = new LocalStorage('./scratch');
+}
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -36,7 +40,9 @@ app.get('/signin', function(req, res){
 });
 
 app.post('/signin', function(req, res){
-   // localStorage.setItem('message', req.body)
+console.log('local storage ', localStorage)
+   localStorage.setItem('message', req.body)
+   console.log(localStorage.getItem('message'))
    res.send("recieved your request!");
 });
 
@@ -81,6 +87,9 @@ app.use('/things', things);
 
 
 app.all('/test', function(req, res){
+	console.log('Please work')
+	localStorage.setItem('MyKey', 'My Value!')
+	console.log(localStorage.getItem('MyKey'))
 	res.send("Catching all HTTP methods from test!")
 });
 

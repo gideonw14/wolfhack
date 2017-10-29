@@ -1,0 +1,13 @@
+extends ./layout.pug
+
+block content
+	form(action = '/form', method = 'POST')
+		div
+			label(for = 'username') Username:
+			input(name = 'username' value = '')
+		br
+		div
+			label(for = 'Password') Password:
+			input(name = 'Password' value = '')
+		br
+		button(type = 'submit') Sign In

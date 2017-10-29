@@ -10,21 +10,32 @@ app.set('views', './views');
 app.use(express.static('public'))
 
 // for parsing application/json
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 
 // for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 // form-urlencoded
 
 // for parsing multipart/form-data
-app.use(upload.array()); 
+app.use(upload.array());
 app.use(express.static('public'));
-
-app.get('/form', function(req, res){
-	res.render('form')
+app.get('/', function(req, res){
+	res.render("homepage");
+})
+app.get('/signup', function(req, res){
+	res.render('signup')
 });
 
-app.post('/form', function(req, res){
+app.post('/signup', function(req, res){
+   // localStorage.setItem('message', req.body)
+   res.send("recieved your request!");
+});
+
+app.get('/signin', function(req, res){
+	res.render('signin')
+});
+
+app.post('/signin', function(req, res){
    // localStorage.setItem('message', req.body)
    res.send("recieved your request!");
 });

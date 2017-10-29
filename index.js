@@ -41,8 +41,8 @@ app.get('/signin', function(req, res){
 
 app.post('/signin', function(req, res){
 console.log('local storage ', localStorage)
-   localStorage.setItem('message', req.body)
-   console.log(localStorage.getItem('message'))
+   localStorage.setItem('user', req.body)
+   console.log(localStorage.getItem('user'))
    res.send("recieved your request!");
 });
 
